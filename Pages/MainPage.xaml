@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pageModels="clr-namespace:KeyGenerator.PageModels"             
+             xmlns:models="clr-namespace:KeyGenerator.Models"
+             xmlns:controls="clr-namespace:KeyGenerator.Pages.Controls"
+             xmlns:pullToRefresh="clr-namespace:Syncfusion.Maui.Toolkit.PullToRefresh;assembly=Syncfusion.Maui.Toolkit"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="KeyGenerator.Pages.MainPage"
+             x:Name="OverviewPage"
+             Title="KeyGenerator" BackgroundColor="#121212">
+
+    <VerticalStackLayout Padding="40" Spacing="24" VerticalOptions="Center">
+
+        <!-- Titre -->
+        <Label Text="🛠️ Générateur de clés"
+               FontSize="26"
+               FontAttributes="Bold"
+               TextColor="White"
+               HorizontalTextAlignment="Center"/>
+
+        <Label Text="Outil administrateur — SDBO"
+               FontSize="13"
+               TextColor="#666666"
+               HorizontalTextAlignment="Center"/>
+
+        <!-- Input MAC -->
+        <VerticalStackLayout Spacing="8">
+            <Label Text="Adresse MAC du client"
+                   TextColor="#AAAAAA"
+                   FontSize="13"/>
+            <Entry x:Name="MacEntry"
+                   Placeholder="Ex: A1B2C3D4E5F6  ou  A1:B2:C3:D4:E5:F6"
+                   PlaceholderColor="#444444"
+                   TextColor="White"
+                   BackgroundColor="#1E1E1E"
+                   FontFamily="Courier New"
+                   FontSize="15"
+                   ClearButtonVisibility="WhileEditing"/>
+        </VerticalStackLayout>
+
+        <!-- Bouton générer -->
+        <Button Text="Générer la clé"
+                Clicked="OnGenerateClicked"
+                BackgroundColor="#4FC3F7"
+                TextColor="#000000"
+                FontAttributes="Bold"
+                CornerRadius="8"
+                HeightRequest="50"/>
+
+        <!-- Résultat -->
+        <Border x:Name="ResultCard"
+                BackgroundColor="#1A2E1A"
+                StrokeShape="RoundRectangle 10"
+                Stroke="#2E5E2E"
+                Padding="20"
+                IsVisible="False">
+            <VerticalStackLayout Spacing="10">
+                <Label Text="✅ Clé générée"
+                       TextColor="#66BB6A"
+                       FontSize="13"/>
+                <Label x:Name="KeyLabel"
+                       TextColor="#A5D6A7"
+                       FontSize="22"
+                       FontAttributes="Bold"
+                       FontFamily="Courier New"
+                       HorizontalTextAlignment="Center"/>
+                <Button Text="📋 Copier la clé"
+                        Clicked="OnCopyClicked"
+                        BackgroundColor="#2E5E2E"
+                        TextColor="#A5D6A7"
+                        CornerRadius="6"
+                        HeightRequest="40"/>
+            </VerticalStackLayout>
+        </Border>
+
+        <!-- Erreur -->
+        <Label x:Name="ErrorLabel"
+               TextColor="#FF5555"
+               FontSize="13"
+               IsVisible="False"
+               HorizontalTextAlignment="Center"/>
+
+    </VerticalStackLayout>
+</ContentPage>
